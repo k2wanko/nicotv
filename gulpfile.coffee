@@ -18,3 +18,7 @@ load_task './tasks/extension'
 gulp.task 'extension', ['extension:default'], ->
 
 gulp.task 'receiver', ->
+
+gulp.task 'watch', ['default'], ->
+  gulp.watch './src/**/manifest.yaml', ['extension:manifest']
+  gulp.watch './src/**/*.coffee', ['extension:js']
