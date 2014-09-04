@@ -18,7 +18,7 @@ gulp.task 'default', ['manifest', 'js'], ->
 
 gulp.task 'manifest', ->
   gulp.src path.join(src, 'manifest.yaml')
-  .pipe yaml()
+  .pipe yaml pretty: DEBUG
   .pipe gulp.dest dest
 
 gulp.task 'js', ->
@@ -30,4 +30,8 @@ gulp.task 'js', ->
   .pipe rename (path)-> path.extname = '.js'; path
   .pipe gulp.dest dest
 
-gulp.task 'css', ->
+gulp.task 'watch', ['default'], ->
+  gulp.watch path.join(src, 'manifest.yaml'), ['manifest']
+  gulp.watch path.join(src, '*.coffee'), ['js']
+
+#gulp.task 'css', ->
