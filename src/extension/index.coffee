@@ -1,0 +1,4 @@
+
+
+do ->
+  console.log 'index'
