@@ -15,6 +15,6 @@ gulp.task 'clean', ->
   .exec()
 
 load_task './tasks/extension'  
-gulp.task 'extension', ['extension:js'], ->
+gulp.task 'extension', ['extension:default'], ->
 
 gulp.task 'receiver', ->

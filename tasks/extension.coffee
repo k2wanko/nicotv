@@ -11,6 +11,8 @@ config = require './config'
 src  = path.join(config.src, 'extension')
 dest = path.join(config.dest, 'extension')
 
+gulp.task 'default', ['manifest', 'js'], ->
+
 gulp.task 'manifest', ->
   gulp.src path.join(src, 'manifest.yaml')
   .pipe yaml()
