@@ -1,15 +1,18 @@
 
-gulp =        require 'gulp'
-yaml =        require 'gulp-yaml'
-browserify =  require 'gulp-browserify'
-rename =      require 'gulp-rename'
+gulp        = require 'gulp'
+gulpif      = require 'gulp-if'
+yaml        = require 'gulp-yaml'
+browserify  = require 'gulp-browserify'
+uglify      = require 'gulp-uglify'
+rename      = require 'gulp-rename'
 
-path = require 'path'
+path        = require 'path'
 
-config = require './config'
+config      = require './config'
 
-src  = path.join(config.src, 'extension')
-dest = path.join(config.dest, 'extension')
+DEBUG       = config.DEBUG
+src         = path.join(config.src, 'extension')
+dest        = path.join(config.dest, 'extension')
 
 gulp.task 'default', ['manifest', 'js'], ->
 
@@ -22,7 +25,8 @@ gulp.task 'js', ->
   gulp.src path.join(src, '*.coffee'), read: false
   .pipe browserify
     transform: ['coffeeify']
-    extensions: ['.coffee']
+    extensions: (ext for ext of require.extensions)
+  .pipe gulpif !DEBUG, uglify()
   .pipe rename (path)-> path.extname = '.js'; path
   .pipe gulp.dest dest
 

@@ -1,4 +1,6 @@
 
 
+request = require '../lib/request'
+
 do ->
-  console.log 'index'
+  console.log 'nicotv', request
