@@ -1,0 +1,16 @@
+---
+manifest_version: 2
+name: nicotv
+description: Nicovideo player for chromecast
+version: 1.0.0
+
+content_scripts:
+  - matches: 
+      - "http://www.nicovideo.jp/*"
+  - js: 
+      - "nicotv.js"
+       
+
+permissions:
+  - "http://www.nicovideo.jp/*"
+  
