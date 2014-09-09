@@ -16,8 +16,9 @@ gulp.task 'clean', ->
 
 load_task './tasks/extension'  
 gulp.task 'extension', ['extension:default'], ->
-
-gulp.task 'receiver', ->
+  
+load_task './tasks/receiver'
+gulp.task 'receiver', ['receiver:default'], ->
 
 gulp.task 'watch', ['default'], ->
   gulp.watch './src/**/manifest.yaml', ['extension:manifest']

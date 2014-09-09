@@ -2,15 +2,22 @@
 manifest_version: 2
 name: nicotv
 description: Nicovideo player for chromecast
-version: 1.0.0
+version: 0.0.1
 
 content_scripts:
-  - matches: 
+  -
+    all_frames: true
+    matches: 
       - "http://www.nicovideo.jp/*"
-  - js: 
-      - "nicotv.js"
+    js: 
+      - contents.js
+
+    run_at: document_start
        
 
 permissions:
+  - "tabs"
   - "http://www.nicovideo.jp/*"
   
+web_accessible_resources:
+  - sender.js

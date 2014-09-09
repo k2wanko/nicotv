@@ -7,6 +7,8 @@ do =>
       url = url + '?' + query if query
         
       xhr = new XMLHttpRequest
+      xhr.withCredentials = true
+      
       xhr.onreadystatechange = do -> request._onreadystatechange xhr, callback
 
       xhr.open 'GET', url
@@ -18,6 +20,7 @@ do =>
       query = if params then request._encode(params) else null
         
       xhr = new XMLHttpRequest
+      xhr.withCredentials = true
       xhr.onreadystatechange = do -> request._onreadystatechange xhr, callback
       
       xhr.open 'POST', url
