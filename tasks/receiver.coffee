@@ -35,3 +35,6 @@ gulp.task 'jade', ->
   .pipe jade pretty: DEBUG
   .pipe gulp.dest dest
 
+gulp.task 'watch', ['default'], ->
+  gulp.watch path.join(src, '*.coffee'), ['js']
+  gulp.watch path.join(src, '*.jade'), ['html']
